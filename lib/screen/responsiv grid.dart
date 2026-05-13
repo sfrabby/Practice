@@ -9,13 +9,13 @@ class responsivGrid extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text("Responsiv Grid", style: TextStyle(color: Colors.white),),
+        title: Text("Responsiv Grid", style: TextStyle(color: Colors.white)),
       ),
-      body: ResponsiveGridRow(children: [
-        ResponsiveGridCol(
-
-            child: Container(color: Colors.green,))
-      ]),
+      body: ResponsiveGridRow(
+        children: [
+          ResponsiveGridCol(xl: 12, child: Container(color: Colors.green)),
+        ],
+      ),
     );
   }
 }
