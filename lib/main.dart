@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practiceostad/screen/note%20App.dart';
 import 'package:practiceostad/screen/responsiv%20grid.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:  responsivGrid(),
+      home:  noteApp(),
     );
   }
 }
