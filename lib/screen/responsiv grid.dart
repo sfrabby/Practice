@@ -13,7 +13,39 @@ class responsivGrid extends StatelessWidget {
       ),
       body: ResponsiveGridRow(
         children: [
-          ResponsiveGridCol(xl: 12, child: Container(color: Colors.green)),
+          ResponsiveGridCol(
+            lg: 4,
+            xs: 12,
+            child: Container(
+              padding: EdgeInsets.all(5),
+              height: 100,
+              color: Colors.green,
+            ),
+          ),
+          ResponsiveGridCol(
+            lg: 4,
+            xs: 12,
+            child: Container(
+              padding: EdgeInsets.all(5),
+              height: 100,
+              color: Colors.redAccent,
+            ),
+          ),
+          ResponsiveGridCol(
+            lg: 4,
+            xs: 12,
+            child: Container(height: 100, color: Colors.teal),
+          ),
+          ResponsiveGridCol(
+            lg: 4,
+            xs: 12,
+            child: Container(height: 100, color: Colors.orange),
+          ),
+          ResponsiveGridCol(
+            lg: 4,
+            xs: 12,
+            child: Container(height: 100, color: Colors.purple),
+          ),
         ],
       ),
     );
