@@ -51,20 +51,16 @@ class _noteAppState extends State<noteApp> {
                 ),
                 SizedBox(width: 10),
                 SizedBox(
-                  width:
-                      150, // বাটনের উইডথ একটু বাড়িয়ে দিলাম যাতে দেখতে ভালো লাগে
-                  height: 50, // একটি স্ট্যান্ডার্ড উচ্চতা যোগ করা হলো
+                  width: 150,
+                  height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors
-                          .teal, // আপনার অ্যাপবারের সাথে মিল রেখে টিল কালার
-                      foregroundColor: Colors.white, // টেক্সট কালার সাদা
-                      elevation: 5, // বাটনের নিচে হালকা শ্যাডো
+                      backgroundColor: Colors.grey[200],
+                      foregroundColor: Colors.teal,
+                      elevation: 5,
                       shadowColor: Colors.teal.withOpacity(0.5),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          12,
-                        ), // বর্ডার একটু রাউন্ডেড করা হলো
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
@@ -84,16 +80,19 @@ class _noteAppState extends State<noteApp> {
                 ),
               ],
             ),
+            SizedBox(height: 20,),
             ListView.builder(
               shrinkWrap: true,
               itemCount: taskList.length,
               reverse: true,
               itemBuilder: (context, index) {
                 return Card(
+                  elevation: 6,
+                  color: Colors.grey[200],
                   child: ListTile(
-                    title: Text(taskList[index]),
+                    title: Text(taskList[index], style: TextStyle(fontSize: 20,),),
                     subtitle: Text(
-                      "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} ",
+                      "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year} ", style: TextStyle(color: Colors.grey),
                     ),
                     trailing: IconButton(
                       onPressed: () {
