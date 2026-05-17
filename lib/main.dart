@@ -5,9 +5,11 @@ import 'package:practiceostad/screen/mediaQuary.dart';
 import 'package:practiceostad/screen/note%20App.dart';
 import 'package:practiceostad/screen/responsiv%20grid.dart';
 
+import 'Calculator App/Ui.dart';
+
 void main() => runApp(
   DevicePreview(
-    enabled: !kReleaseMode,
+    enabled: false,
     builder: (context) => MyApp(), // Wrap your app
   ),
 );
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:  MediaQuary(),
+      home:  calculator(),
     );
   }
 }
