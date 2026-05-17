@@ -47,17 +47,39 @@ class _calculatorState extends State<calculator> {
             SizedBox(height: 10),
             Row(
               children: [
-                BuildButton(onClick: () {  }, text: '1',),
-                SizedBox(width: 20,),
-                BuildButton(onClick: () {  }, text: '2',),
-                SizedBox(width: 20,),
-                BuildButton(onClick: () {  }, text: '3',)
+                BuildButton(onClick: () {}, text: '7'),
+                BuildButton(onClick: () {}, text: '8'),
+                BuildButton(onClick: () {}, text: '9'),
+                BuildButton(onClick: () {}, text: "/"),
               ],
-            )
+            ),
+            Row(
+              children: [
+                BuildButton(onClick: () {}, text: '4'),
+                BuildButton(onClick: () {}, text: '5'),
+                BuildButton(onClick: () {}, text: '6'),
+                BuildButton(onClick: () {}, text: "*"),
+              ],
+            ),
+            Row  (
+              children: [
+                BuildButton(onClick: () {}, text: '1'),
+                BuildButton(onClick: () {}, text: '2'),
+                BuildButton(onClick: () {}, text: '3'),
+                BuildButton(onClick: () {}, text: "-"),
+              ],
+            ),
+            Row(
+              children: [
+                BuildButton(onClick: () {}, text: 'C'),
+                BuildButton(onClick: () {}, text: '0'),
+                BuildButton(onClick: () {}, text: '.'),
+                BuildButton(onClick: () {}, text: "+"),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
 }
-

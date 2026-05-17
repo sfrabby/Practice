@@ -11,22 +11,27 @@ class BuildButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(10),
-        fixedSize: Size(40, 60),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        backgroundColor: Colors.grey[300],
-      ),
-      onPressed: onClick,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: color ?? Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.all(10),
+            fixedSize: Size(40, 60),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            backgroundColor: Colors.grey[300],
+          ),
+          onPressed: onClick,
+          child: Text(
+            text,
+            style: TextStyle(
+              color: color ?? Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
       ),
     );
