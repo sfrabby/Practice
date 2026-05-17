@@ -21,13 +21,13 @@ class BuildButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            backgroundColor: Colors.grey[300],
+            backgroundColor:color?? Colors.grey[300],
           ),
           onPressed: onClick,
           child: Text(
             text,
             style: TextStyle(
-              color: color ?? Colors.black,
+              color:  Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.w700,
             ),
