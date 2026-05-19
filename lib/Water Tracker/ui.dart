@@ -19,8 +19,23 @@ class _waterTankState extends State<waterTank> {
       body:Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+              alignment: Alignment.center,
+              height: 180,
+              width: 250,
+              child: Text("3000 LTR", style: TextStyle(color: Colors.blue ,fontSize: 25, fontWeight: FontWeight.w800),),
+              decoration: BoxDecoration(
+                color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(color: Colors.blue),
+
+                ]
+              ),
+            ),
+            
 
           ],
 
