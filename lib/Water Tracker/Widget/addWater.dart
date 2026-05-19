@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ButtonAdd extends StatelessWidget {
-  const ButtonAdd({
-    super.key,
-  });
+  String text;
+  final VoidCallback OnTap;
+
+  ButtonAdd({super.key, required this.OnTap, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +15,16 @@ class ButtonAdd extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: OnTap,
           icon: Icon(Icons.water_drop, color: Colors.white, size: 30),
           label: Text(
-            "+300",
+            text,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w800,

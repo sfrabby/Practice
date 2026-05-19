@@ -90,7 +90,10 @@ class _waterTankState extends State<waterTank> {
             SizedBox(height: 15),
             Wrap(
               children: [
-                ButtonAdd(),
+                ButtonAdd(OnTap: () {  }, text: '200',),
+                ButtonAdd(OnTap: () {  }, text: '400',),
+                ButtonAdd(OnTap: () {  }, text: '800',),
+                ButtonAdd(OnTap: () {  }, text: '1600',)
               ],
             ),
           ],
