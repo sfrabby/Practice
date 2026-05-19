@@ -6,6 +6,7 @@ import 'package:practiceostad/screen/note%20App.dart';
 import 'package:practiceostad/screen/responsiv%20grid.dart';
 
 import 'Calculator App/Ui.dart';
+import 'Water Tracker/ui.dart';
 
 void main() => runApp(
   DevicePreview(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:  calculator(),
+      home:  waterTank(),
     );
   }
 }
