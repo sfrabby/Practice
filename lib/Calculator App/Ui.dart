@@ -10,8 +10,15 @@ class calculator extends StatefulWidget {
 }
 
 class _calculatorState extends State<calculator> {
+
+  String output = '0';
+  String input = '0';
+  String operator = '0';
+  double num1 = 0;
+  double num2 = 0;
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -46,19 +53,17 @@ class _calculatorState extends State<calculator> {
             ),
             Divider(),
             SizedBox(height: 10),
-            Row(
-              children: [
-                BuildButton(onClick: () {}, text: 'C', color: Colors.orangeAccent,),
-                BuildButton(onClick: () {}, text: '⌫', color: Colors.orangeAccent),
-                BuildButton(onClick: () {}, text: "=", color: Colors.orangeAccent),
-              ],
-            ),
+
             Row(
               children: [
                 BuildButton(onClick: () {}, text: '7'),
                 BuildButton(onClick: () {}, text: '8'),
                 BuildButton(onClick: () {}, text: '9'),
-                BuildButton(onClick: () {}, text: "/", color: Colors.orangeAccent),
+                BuildButton(
+                  onClick: () {},
+                  text: "/",
+                  color: Colors.orangeAccent,
+                ),
               ],
             ),
             Row(
@@ -66,15 +71,23 @@ class _calculatorState extends State<calculator> {
                 BuildButton(onClick: () {}, text: '4'),
                 BuildButton(onClick: () {}, text: '5'),
                 BuildButton(onClick: () {}, text: '6'),
-                BuildButton(onClick: () {}, text: "*", color: Colors.orangeAccent),
+                BuildButton(
+                  onClick: () {},
+                  text: "*",
+                  color: Colors.orangeAccent,
+                ),
               ],
             ),
-            Row  (
+            Row(
               children: [
                 BuildButton(onClick: () {}, text: '1'),
                 BuildButton(onClick: () {}, text: '2'),
                 BuildButton(onClick: () {}, text: '3'),
-                BuildButton(onClick: () {}, text: "-", color: Colors.orangeAccent),
+                BuildButton(
+                  onClick: () {},
+                  text: "-",
+                  color: Colors.orangeAccent,
+                ),
               ],
             ),
             Row(
@@ -82,7 +95,30 @@ class _calculatorState extends State<calculator> {
                 BuildButton(onClick: () {}, text: '00'),
                 BuildButton(onClick: () {}, text: '0'),
                 BuildButton(onClick: () {}, text: '.'),
-                BuildButton(onClick: () {}, text: "+", color: Colors.orangeAccent,),
+                BuildButton(
+                  onClick: () {},
+                  text: "+",
+                  color: Colors.orangeAccent,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                BuildButton(
+                  onClick: () {},
+                  text: 'C',
+                  color: Colors.orangeAccent,
+                ),
+                BuildButton(
+                  onClick: () {},
+                  text: '⌫',
+                  color: Colors.orangeAccent,
+                ),
+                BuildButton(
+                  onClick: () {},
+                  text: "=",
+                  color: Colors.orangeAccent,
+                ),
               ],
             ),
           ],
