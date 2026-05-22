@@ -18,7 +18,7 @@ class ButtonAdd extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.deepPurpleAccent,
             foregroundColor: Colors.white,
           ),
           onPressed: OnTap,

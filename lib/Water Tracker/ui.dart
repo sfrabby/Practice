@@ -39,11 +39,11 @@ class _waterTankState extends State<waterTank> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.water_drop, color: Colors.blue, size: 50),
+                  Icon(Icons.water_drop, color: Colors.deepPurpleAccent, size: 50),
                   Text(
                     "3000 LTR",
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.deepPurpleAccent,
                       fontSize: 25,
                       fontWeight: FontWeight.w800,
                     ),
@@ -55,7 +55,7 @@ class _waterTankState extends State<waterTank> {
                 borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.blue.withOpacity(0.3), // নীল রঙের হালকা ছায়া
+                    color: Colors.deepPurpleAccent.withOpacity(0.3), // নীল রঙের হালকা ছায়া
                     blurRadius: 5.0, // কম ঝাপসা
                     spreadRadius: 1.0, // কম ছড়ানো
                     offset: Offset(-2.0, -2.0),
@@ -73,14 +73,14 @@ class _waterTankState extends State<waterTank> {
                   child: CircularProgressIndicator(
                     strokeWidth: 10,
                     backgroundColor: Colors.grey[400],
-                    color: Colors.blue,
+                    color: Colors.deepPurpleAccent,
                     value: 0.3,
                   ),
                 ),
                 Text(
                   "30%",
                   style: TextStyle(
-                    color: Colors.blue,
+                    color: Colors.deepPurpleAccent,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
