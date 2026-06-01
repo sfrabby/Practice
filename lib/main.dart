@@ -6,6 +6,7 @@ import 'package:practiceostad/screen/note%20App.dart';
 import 'package:practiceostad/screen/responsiv%20grid.dart';
 
 import 'Calculator App/Ui.dart';
+import 'Expanse Tracker/UI.dart';
 import 'Water Tracker/ui.dart';
 
 void main() => runApp(
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home:  waterTank(),
+      home:  expanse(),
     );
   }
 }
