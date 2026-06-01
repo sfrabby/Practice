@@ -15,7 +15,7 @@ class _waterTankState extends State<waterTank> {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurpleAccent,
         title: Text(
           "water Tank",
           style: TextStyle(
