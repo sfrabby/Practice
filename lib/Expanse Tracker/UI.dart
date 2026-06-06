@@ -8,27 +8,37 @@ class expanse extends StatefulWidget {
 }
 
 class _expanseState extends State<expanse> {
+  final List<String> categoryList = ['food', 'transport' , 'bills'];
   void showFrom (){
+    String selectedValue = '';
     showModalBottomSheet(context: context, builder: (context) {
-      return Column(
-        children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Title",
-              border: OutlineInputBorder(
-              )
-            ),
-          ),
-          SizedBox(height: 20,),
-          TextField(
-            decoration: InputDecoration(
+      return Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              decoration: InputDecoration(
                 labelText: "Title",
                 border: OutlineInputBorder(
                 )
+              ),
             ),
-          ),
+            SizedBox(height: 20,),
+            TextField(
+              decoration: InputDecoration(
+                  labelText: "Amount",
+                  border: OutlineInputBorder(
+                  )
+              ),
+            ),
+            SizedBox(height: 10,),
+            DropdownButtonFormField(items: categoryList.map((e)=> DropdownMenuItem(value:  categoryList, child: Text("Category"))).toList(), onChanged: (value) {
+              selectedValue = value! as String;
+            },)
 
-        ],
+          ],
+        ),
       );
     },);
   }
@@ -37,6 +47,9 @@ class _expanseState extends State<expanse> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
+        actions: [IconButton(onPressed: (){setState(() {
+          showFrom();
+        });}, icon:Icon(Icons.add))],
       ),
     );
   }
