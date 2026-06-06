@@ -14,6 +14,8 @@ class _ExpanseState extends State<Expanse> {
   // সিলেক্টেড ভ্যালু ট্র্যাক করার জন্য ভেরিয়েবল
   String? selectedValue;
 
+  double totalAmount = 0.0;
+
   void showFrom() {
     showModalBottomSheet(
       context: context,
@@ -64,7 +66,13 @@ class _ExpanseState extends State<Expanse> {
                       });
                     },
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  SizedBox(height: 40, width: double.infinity,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal, foregroundColor: Colors.white
+                      ) ,
+                      onPressed: (){}, child: Text("Add", style: TextStyle(color: Colors.black),)),)
                 ],
               ),
             );
@@ -87,6 +95,21 @@ class _ExpanseState extends State<Expanse> {
           )
         ],
       ),
+      body: SafeArea(child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 60 ,right: 40, top: 10),
+            child: Card(
+              color: Colors.teal,
+              child: SizedBox(
+                height: 100,
+                width: 200,
+                child: Text(totalAmount.toString()),
+              ),
+            ),
+          )
+        ],
+      )),
     );
   }
 }
