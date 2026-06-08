@@ -97,21 +97,20 @@ class _ExpanseState extends State<Expanse> {
       ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Column er shobkichu majhkane anar jonno
           children: [
+            // 1. Top Card (Uporer fixed card)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0), // Shundor balanced margin
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
               child: Card(
-                color: Colors.teal.shade700, // Arektu deep aar premium teal color
-                elevation: 6, // Shundor ektu shadow ba bhasha bhasha bhab
+                color: Colors.teal.shade700,
+                elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16), // Rounded corners
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Container(
-                  width: double.infinity, // Purata width nibe responsive thakar jonno
-                  padding: const EdgeInsets.all(24.0), // Bhitoret padding
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
                         'Total Amount',
@@ -119,22 +118,81 @@ class _ExpanseState extends State<Expanse> {
                           color: Colors.white70,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          letterSpacing: 1.2,
                         ),
                       ),
-                      const SizedBox(height: 8), // Gap bananor jonno
+                      const SizedBox(height: 6),
                       Text(
-                        '\$$totalAmount', // Shundor dekharnor jonno dollar/currency sign (icche hole bad dite paro)
+                        '\$$totalAmount',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 32, // Boro aar porishkar font
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Roboto', // Ba tomar priority font
                         ),
                       ),
                     ],
                   ),
                 ),
+              ),
+            ),
+
+            // 2. Title Section (List er upore choto ekta title thakle premium lage)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Recent Transactions',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+            ),
+
+            // 3. ListView Builder (Nicher scrolling list)
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10, // Tomar list er size ekhane hobe
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 1.5,
+                    margin: const EdgeInsets.only(bottom: 10.0), // Protiti card er majhe gap
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // Subtle rounded corners
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.teal.withOpacity(0.1),
+                        child: Icon(Icons.arrow_downward, color: Colors.teal.shade700), // Visual icon
+                      ),
+                      title: Text(
+                        'Item Title $index',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Subtitle details go here...',
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 13,
+                        ),
+                      ),
+                      trailing: Text(
+                        '-\$50.00', // Trailing-e price ba time dile UI ta perfect lage
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red.shade700,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ],
