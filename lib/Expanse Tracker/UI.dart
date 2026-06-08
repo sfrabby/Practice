@@ -95,21 +95,51 @@ class _ExpanseState extends State<Expanse> {
           )
         ],
       ),
-      body: SafeArea(child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 60 ,right: 40, top: 10),
-            child: Card(
-              color: Colors.teal,
-              child: SizedBox(
-                height: 100,
-                width: 200,
-                child: Text(totalAmount.toString()),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, // Column er shobkichu majhkane anar jonno
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0), // Shundor balanced margin
+              child: Card(
+                color: Colors.teal.shade700, // Arektu deep aar premium teal color
+                elevation: 6, // Shundor ektu shadow ba bhasha bhasha bhab
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16), // Rounded corners
+                ),
+                child: Container(
+                  width: double.infinity, // Purata width nibe responsive thakar jonno
+                  padding: const EdgeInsets.all(24.0), // Bhitoret padding
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Total Amount',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 8), // Gap bananor jonno
+                      Text(
+                        '\$$totalAmount', // Shundor dekharnor jonno dollar/currency sign (icche hole bad dite paro)
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 32, // Boro aar porishkar font
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Roboto', // Ba tomar priority font
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          )
-        ],
-      )),
+          ],
+        ),
+      )
     );
   }
 }
