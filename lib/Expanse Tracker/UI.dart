@@ -15,7 +15,7 @@ class _ExpanseState extends State<Expanse> {
   String? selectedValue;
 
   double totalAmount = 0.0;
-
+  final List<Expanse> _expanse = [];
   void showFrom() {
     showModalBottomSheet(
       context: context,
@@ -43,7 +43,8 @@ class _ExpanseState extends State<Expanse> {
                   ),
                   const SizedBox(height: 20),
                   const TextField(
-                    keyboardType: TextInputType.number, // টাকার পরিমাণের জন্য নম্বর কিবোর্ড
+                    keyboardType: TextInputType
+                        .number, // টাকার পরিমাণের জন্য নম্বর কিবোর্ড
                     decoration: InputDecoration(
                       labelText: "Amount",
                       border: OutlineInputBorder(),
@@ -56,7 +57,9 @@ class _ExpanseState extends State<Expanse> {
                     items: categoryList.map((String category) {
                       return DropdownMenuItem<String>(
                         value: category,
-                        child: Text(category), // এখানে ক্যাটাগরির আসল নাম দেখাবে
+                        child: Text(
+                          category,
+                        ), // এখানে ক্যাটাগরির আসল নাম দেখাবে
                       );
                     }).toList(),
                     onChanged: (value) {
@@ -67,12 +70,18 @@ class _ExpanseState extends State<Expanse> {
                     },
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(height: 40, width: double.infinity,
-                  child: ElevatedButton(
+                  SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal, foregroundColor: Colors.white
-                      ) ,
-                      onPressed: (){}, child: Text("Add", style: TextStyle(color: Colors.black),)),)
+                        backgroundColor: Colors.teal,
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: Text("Add", style: TextStyle(color: Colors.black)),
+                    ),
+                  ),
                 ],
               ),
             );
@@ -82,25 +91,25 @@ class _ExpanseState extends State<Expanse> {
     );
   }
 
+  void _addExpanse(String title, double amount, DateTime date, String category) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
         // মডাল ওপেন করার জন্য বাইরে setState দরকার নেই, সরাসরি ফাংশন কল করলেই হবে
-        actions: [
-          IconButton(
-            onPressed: showFrom,
-            icon: const Icon(Icons.add),
-          )
-        ],
+        actions: [IconButton(onPressed: showFrom, icon: const Icon(Icons.add))],
       ),
       body: SafeArea(
         child: Column(
           children: [
             // 1. Top Card (Uporer fixed card)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 12.0,
+              ),
               child: Card(
                 color: Colors.teal.shade700,
                 elevation: 4,
@@ -109,7 +118,10 @@ class _ExpanseState extends State<Expanse> {
                 ),
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20.0,
+                    horizontal: 16.0,
+                  ),
                   child: Column(
                     children: [
                       const Text(
@@ -159,15 +171,25 @@ class _ExpanseState extends State<Expanse> {
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 1.5,
-                    margin: const EdgeInsets.only(bottom: 10.0), // Protiti card er majhe gap
+                    margin: const EdgeInsets.only(
+                      bottom: 10.0,
+                    ), // Protiti card er majhe gap
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12), // Subtle rounded corners
+                      borderRadius: BorderRadius.circular(
+                        12,
+                      ), // Subtle rounded corners
                     ),
                     child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 4.0,
+                      ),
                       leading: CircleAvatar(
                         backgroundColor: Colors.teal.withOpacity(0.1),
-                        child: Icon(Icons.arrow_downward, color: Colors.teal.shade700), // Visual icon
+                        child: Icon(
+                          Icons.arrow_downward,
+                          color: Colors.teal.shade700,
+                        ), // Visual icon
                       ),
                       title: Text(
                         'Item Title $index',
@@ -197,7 +219,7 @@ class _ExpanseState extends State<Expanse> {
             ),
           ],
         ),
-      )
+      ),
     );
   }
 }
