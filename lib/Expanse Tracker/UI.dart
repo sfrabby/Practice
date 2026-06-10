@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'model/expanse model.dart';
+
 // Dart এর নিয়ম অনুযায়ী ক্লাস এর নাম বড় হাতের অক্ষরে (Expanse) করা হয়েছে
 class Expanse extends StatefulWidget {
   const Expanse({super.key});
@@ -11,21 +13,21 @@ class Expanse extends StatefulWidget {
 class _ExpanseState extends State<Expanse> {
   final List<String> categoryList = ['food', 'transport', 'bills'];
 
-  // সিলেক্টেড ভ্যালু ট্র্যাক করার জন্য ভেরিয়েবল
+  TextEditingController titleController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
+  DateTime expanseDate = DateTime.now();
   String? selectedValue;
 
   double totalAmount = 0.0;
-  final List<Expanse> _expanse = [];
+  final List<ExpanseModel> _expanse = [];
   void showFrom() {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true, // কিবোর্ড আসলে যেন ফর্মটি ওপরে উঠে যায়
+      isScrollControlled: true,
       builder: (context) {
-        // StatefulBuilder ব্যবহার করা হয়েছে যাতে মডালের ভেতরের স্টেট আপডেট করা যায়
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
             return Padding(
-              // কিবোর্ডের কারণে যেন ফর্ম ঢেকে না যায়, সেজন্য নিচের প্যাডিং ডাইনামিক করা হয়েছে
               padding: EdgeInsets.only(
                 top: 10,
                 left: 10,
@@ -35,14 +37,16 @@ class _ExpanseState extends State<Expanse> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: titleController,
+                    decoration: const InputDecoration(
                       labelText: "Title",
                       border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const TextField(
+                  TextField(
+                    controller: amountController,
                     keyboardType: TextInputType
                         .number, // টাকার পরিমাণের জন্য নম্বর কিবোর্ড
                     decoration: InputDecoration(
@@ -78,7 +82,30 @@ class _ExpanseState extends State<Expanse> {
                         backgroundColor: Colors.teal,
                         foregroundColor: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        final amountC = double.tryParse(
+                          amountController.text.trim(),
+                        );
+                        if (titleController.text.isNotEmpty ||
+                            amountC != null) {
+                          _addExpanse(
+                            titleController.text,
+                            amountC!,
+                            expanseDate,
+                            selectedValue!,
+                          );
+
+                          Navigator.pop(context);
+                          titleController.clear();
+                          amountController.clear();
+                          selectedValue = null;
+                        } else {
+                          Navigator.pop(context);
+                          titleController.clear();
+                          amountController.clear();
+                          selectedValue = null;
+                        }
+                      },
                       child: Text("Add", style: TextStyle(color: Colors.black)),
                     ),
                   ),
@@ -91,14 +118,31 @@ class _ExpanseState extends State<Expanse> {
     );
   }
 
-  void _addExpanse(String title, double amount, DateTime date, String category) {}
+  void _addExpanse(
+    String title,
+    double amount,
+    DateTime date,
+    String category,
+  ) {
+    setState(() {
+      _expanse.add(
+        ExpanseModel(
+          title: title,
+          amount: amount,
+          category: category,
+          date: date,
+        ),
+      );
+
+      totalAmount += amount;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        // মডাল ওপেন করার জন্য বাইরে setState দরকার নেই, সরাসরি ফাংশন কল করলেই হবে
         actions: [IconButton(onPressed: showFrom, icon: const Icon(Icons.add))],
       ),
       body: SafeArea(
@@ -165,15 +209,15 @@ class _ExpanseState extends State<Expanse> {
 
             // 3. ListView Builder (Nicher scrolling list)
             Expanded(
-              child: ListView.builder(
-                itemCount: 10, // Tomar list er size ekhane hobe
+              child: _expanse.isEmpty
+            ? const Center(child: Text("No expenses added yet!")) : ListView.builder(
+                itemCount: _expanse.length,
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 itemBuilder: (context, index) {
+                  final item = _expanse[index];
                   return Card(
                     elevation: 1.5,
-                    margin: const EdgeInsets.only(
-                      bottom: 10.0,
-                    ), // Protiti card er majhe gap
+                    margin: const EdgeInsets.only(bottom: 10.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                         12,
@@ -192,21 +236,21 @@ class _ExpanseState extends State<Expanse> {
                         ), // Visual icon
                       ),
                       title: Text(
-                        'Item Title $index',
+                        item.title,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 15,
                         ),
                       ),
                       subtitle: Text(
-                        'Subtitle details go here...',
+                        "${item.date.day}/${item.date.month}/${item.date.year}",
                         style: TextStyle(
                           color: Colors.grey.shade600,
                           fontSize: 13,
                         ),
                       ),
                       trailing: Text(
-                        '-\$50.00', // Trailing-e price ba time dile UI ta perfect lage
+                        '-\$${item.amount.toStringAsFixed(2)}', // Trailing-e price ba time dile UI ta perfect lage
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.red.shade700,

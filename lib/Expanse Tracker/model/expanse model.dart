@@ -1,11 +1,11 @@
- class Expanse{
+ class ExpanseModel{
   String title;
   double amount ;
   String category;
   DateTime date;
 
 
-  Expanse({
+  ExpanseModel({
   required this.title,
     required this.amount,
     required this.category,
