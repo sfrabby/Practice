@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+class ToDo extends StatefulWidget {
+  const ToDo({super.key});
+
+  @override
+  State<ToDo> createState() => _ToDoState();
+}
+
+class _ToDoState extends State<ToDo> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(centerTitle: true,
+      title: Text("TO_DO",style: TextStyle(color: Colors.white),),
+      backgroundColor: Colors.teal,),
+      floatingActionButton: FloatingActionButton(backgroundColor: Colors.teal,onPressed: (){},child: Icon(Icons.add,color: Colors.white,),),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Card(
+                  color: Colors.orange,
+                  elevation: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(children: [
+                      Text("10", style: TextStyle(fontSize: 30,color: Colors.white),),
+                      SizedBox(height: 10,),
+                      Text("Active Task",style: TextStyle(color: Colors.white),)
+                    ],),
+                  )
+                ),
+                Card(
+                    color: Colors.teal,
+                    elevation: 10,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(children: [
+                        Text("10", style: TextStyle(fontSize: 30,color: Colors.white),),
+                        SizedBox(height: 10,),
+                        Text("Complete Task",style: TextStyle(color: Colors.white),)
+                      ],),
+                    )
+                )
+              ],
+            ),
+            SizedBox(height: 20,),
+
+            Divider(),
+            Text("Tasks", style: TextStyle(color: Colors.teal,fontSize: 25,fontWeight: FontWeight.w800),),
+          ],
+        ),
+      ),
+    );
+  }
+}

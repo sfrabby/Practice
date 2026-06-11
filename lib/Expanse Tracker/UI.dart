@@ -143,7 +143,7 @@ class _ExpanseState extends State<Expanse> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        actions: [IconButton(onPressed: showFrom, icon: const Icon(Icons.add))],
+        title: Text("Expanse Tracker", style: TextStyle(color: Colors.white),),
       ),
       body: SafeArea(
         child: Column(
@@ -264,6 +264,12 @@ class _ExpanseState extends State<Expanse> {
           ],
         ),
       ),
+      floatingActionButton:FloatingActionButton(
+        backgroundColor: Colors.teal,
+
+        onPressed: (){
+          showFrom();
+        },child: Icon(Icons.add, color: Colors.white,),) ,
     );
   }
 }
