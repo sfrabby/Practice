@@ -19,7 +19,9 @@ class _ToDoState extends State<ToDo> {
         ),
       ),
       actions: [
-        TextButton(onPressed: (){}, child: Text("cancel",style: TextStyle(color: Colors.red),)),
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text("cancel",style: TextStyle(color: Colors.red),)),
         ElevatedButton(onPressed: (){
           if(_TaskController.text.trim().isNotEmpty){
             addTask(_TaskController.text);
@@ -47,7 +49,7 @@ class _ToDoState extends State<ToDo> {
       appBar: AppBar(centerTitle: true,
       title: Text("TO_DO",style: TextStyle(color: Colors.white),),
       backgroundColor: Colors.teal,),
-      floatingActionButton: FloatingActionButton(backgroundColor: Colors.teal,onPressed: (){_showTaskDialog(index: 1);},child: Icon(Icons.add,color: Colors.white,),),
+      floatingActionButton: FloatingActionButton(backgroundColor: Colors.teal,onPressed: ()=>_showTaskDialog(),child: Icon(Icons.add,color: Colors.white,),),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -86,6 +88,18 @@ class _ToDoState extends State<ToDo> {
 
             Divider(),
             Text("Tasks", style: TextStyle(color: Colors.teal,fontSize: 25,fontWeight: FontWeight.w800),),
+            Expanded(child: ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+             var  item = tasks[index];
+             return Card(
+               color: Colors.teal[200],
+             child: ListTile(
+               title: Text(item['task']),
+             ),
+             );
+
+            },))
           ],
         ),
       ),
