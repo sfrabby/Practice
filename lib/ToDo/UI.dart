@@ -9,13 +9,45 @@ class ToDo extends StatefulWidget {
 
 class _ToDoState extends State<ToDo> {
 
+  void _showTaskDialog({int ?index}){
+    TextEditingController _TaskController = TextEditingController();
+    showDialog(context: context, builder: (context) => AlertDialog(
+      content: TextField(
+        controller: _TaskController,
+        decoration: InputDecoration(
+          hintText: "Enter Task"
+        ),
+      ),
+      actions: [
+        TextButton(onPressed: (){}, child: Text("cancel",style: TextStyle(color: Colors.red),)),
+        ElevatedButton(onPressed: (){
+          if(_TaskController.text.trim().isNotEmpty){
+            addTask(_TaskController.text);
+          }
+        }, child: Text("save"),style: ElevatedButton.styleFrom(backgroundColor: Colors.teal))
+      ],
+    ),);
+  }
+
+  bool showActiveTask = true;
+  List<Map<String, dynamic>> tasks = [];
+  void addTask(String task){
+    setState(() {
+      tasks.add({
+        'task' : task,
+        'Complete' : false,
+      });
+      Navigator.pop(context);
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true,
       title: Text("TO_DO",style: TextStyle(color: Colors.white),),
       backgroundColor: Colors.teal,),
-      floatingActionButton: FloatingActionButton(backgroundColor: Colors.teal,onPressed: (){},child: Icon(Icons.add,color: Colors.white,),),
+      floatingActionButton: FloatingActionButton(backgroundColor: Colors.teal,onPressed: (){_showTaskDialog(index: 1);},child: Icon(Icons.add,color: Colors.white,),),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
