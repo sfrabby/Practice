@@ -93,9 +93,11 @@ class _ToDoState extends State<ToDo> {
               itemBuilder: (context, index) {
              var  item = tasks[index];
              return Card(
-               color: Colors.teal[200],
+               color: Colors.teal[100],
              child: ListTile(
-               title: Text(item['task']),
+               title: Text(item['task'], style: TextStyle(color: Colors.black),),
+               leading: Card(color: Colors.teal,
+               child: SizedBox(height: 30, width: 30,),),
              ),
              );
 
